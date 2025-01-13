@@ -1,0 +1,15 @@
+{
+    
+        "makefile.configurations": [
+            {
+                "name": "Default",
+                "makeArgs": []
+            },
+            {
+                "name": "Print make version",
+                "makeArgs": ["--version"]
+            }
+        ]
+    ,
+    "makefile.makefilePath": "backend/proto"
+}   

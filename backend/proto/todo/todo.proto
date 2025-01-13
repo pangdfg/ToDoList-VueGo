@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package todo;
+
+import "todo/user.proto";
+
+option go_package = "./;todo";
+
+service TodoService {
+    rpc CreateTodo (CreateTodoReq) returns (TodoRes);
+    rpc ListTodos (ListTodosReq) returns (ListTodosRes);
+    rpc RemoveTodo (RemoveTodoReq) returns (RemoveTodoRes);
+    rpc GetTodo (GetTodoReq) returns (GetTodoRes);
+    rpc EditTodo (EditTodoReq) returns (EditTodoRes);
+}
+
+message TodoInfo {
+    string       id = 1;
+    string       title = 2;
+    string       description = 3;
+    bool         checked = 4;
+    UserInfo     user  = 5;
+}
+
+// =================================================================
+
+
+message CreateTodoReq {
+    TodoInfo todo = 1;
+}
+
+message RemoveTodoReq {
+    string todo_id = 1;
+}
+
+message RemoveTodoRes {
+    TodoInfo todo = 1;
+}
+
+message TodoRes {
+    TodoInfo todo = 1;
+}
+
+message ListTodosReq {}
+
+message ListTodosRes {
+    repeated TodoRes todos = 1;
+}
+
+message GetTodoReq {
+    string todo_id = 1;
+}
+
+message GetTodoRes {
+    TodoInfo todo = 1;
+}
+
+message EditTodoReq {
+    TodoInfo todo = 1;
+}
+
+message EditTodoRes {
+    TodoInfo todo = 1;
+}
